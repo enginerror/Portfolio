@@ -1,2 +1,3 @@
 # Portfolio
-My first portfolio website
+
+![preview](./assets/img/preview.png)
