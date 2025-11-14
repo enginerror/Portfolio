@@ -1,9 +1,66 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useRef } from "react";
+import image1 from "../assets/images/image1.jpg";
+import image2 from "../assets/images/image2.jpg";
+import image3 from "../assets/images/image3.jpg";
+import image4 from "../assets/images/image4.jpg";
+import image5 from "../assets/images/image5.jpg";
+import image6 from "../assets/images/image6.jpg";
+import image7 from "../assets/images/image7.jpg";
+import image8 from "../assets/images/image8.jpg";
+import image9 from "../assets/images/image9.jpg";
+
 const Agence = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const imageDivRef = useRef(null);
+  const imageRef = useRef(null);
+
+  const imageArray = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+  ];
+
+  useGSAP(function () {
+    gsap.to(imageDivRef.current, {
+      scrollTrigger: {
+        trigger: imageDivRef.current,
+        start: "top 22%",
+        end: "top -190%",
+        pin: true,
+        onUpdate: (elem) => {
+          let imageIndex;
+
+          if (elem.progress < 1) {
+            imageIndex = Math.floor(elem.progress * imageArray.length);
+          } else {
+            imageIndex = imageArray.length - 1;
+          }
+
+          imageRef.current.src = imageArray[imageIndex];
+        },
+      },
+    });
+  });
+
   return (
     <div>
       <div className="section1">
-        <div className="absolute h-[20vw] w-[15vw] rounded-2xl top-34 left-[30vw] overflow-hidden">
+        <div
+          ref={imageDivRef}
+          className="absolute h-[20vw] w-[15vw] rounded-2xl top-34 left-[30vw] overflow-hidden"
+        >
           <img
+            ref={imageRef}
             className="h-full w-full object-cover"
             src="https://k72.ca/images/teamMembers/Carl_480x640.jpg?w=480&h=640&fit=crop&s=f0a84706bc91a6f505e8ad35f520f0b7"
             alt=""
@@ -30,7 +87,7 @@ const Agence = () => {
         </div>
       </div>
 
-      <div className="section2"></div>
+      <div className="section2 h-screen"></div>
     </div>
   );
 };
