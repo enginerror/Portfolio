@@ -5,7 +5,7 @@ import Projects from "./pages/Projects";
 
 const App = () => {
   return (
-    <div>
+    <div className="text-white">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/agence" element={<Agence/>}/>
