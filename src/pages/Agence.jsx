@@ -67,7 +67,7 @@ const Agence = () => {
           />
         </div>
 
-        <div className="relative font-[font2]">
+        <div className="relative font-[font2] text-black">
           <div className="mt-[55vh]">
             <h1 className="text-[20vw] uppercase leading-[18vw] text-center">
               Soixan7e <br /> Douze
